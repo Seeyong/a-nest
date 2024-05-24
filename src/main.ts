@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import passport from 'passport';
 import session from 'express-session';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import { HttpExceptionFilter } from './httpException.filter';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
@@ -18,6 +19,7 @@ async function bootstrap(): Promise<void> {
   SwaggerModule.setup('api', app, document);
 
   const port: number = parseInt(process.env.PORT);
+  app.useGlobalFilters(new HttpExceptionFilter());
   app.use(cookieParser());
   app.use(
     session({

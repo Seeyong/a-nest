@@ -9,7 +9,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
-  const config = new DocumentBuilder()
+  const config: Omit<OpenAPIObject, 'paths'> = new DocumentBuilder()
     .setTitle('Cats example')
     .setDescription('The cats API description')
     .setVersion('1.0')

@@ -11,13 +11,13 @@ export class UsersService {
     private userRepository: Repository<Users>,
   ) {}
 
-  getUser() {}
+  getUser(): void {}
   async join(email: string, nickname: string, password: string): Promise<void> {
-    const user = await this.userRepository.findOne({ where: { email } });
+    const user: Users = await this.userRepository.findOne({ where: { email } });
     if (user) {
       throw new UnauthorizedException('잘못된 요청값입니다');
     }
-    const hashedPassword = await bcrypt.hash(password, 12);
+    const hashedPassword: string = await bcrypt.hash(password, 12);
     this.userRepository.save({
       email,
       nickname,

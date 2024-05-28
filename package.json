@@ -24,9 +24,9 @@
     "seed": "ts-node ./node_modules/typeorm-extension/bin/cli.cjs seed:run -d ./dataSource.ts",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "db:migrate": "npm run typeorm migration:run -- -d ./dataSource.ts",
-    "db:migrate:revert": "npm run typeorm migration:revert -- -d ./dataSource.ts",
-    "db:create-migration": "npm run typeorm migration:create -- ./src/migrations/",
+    "db:migrate": "npm run typeorm migration:run -- ./src/migrations -d ./dataSource.ts",
+    "db:migrate:revert": "npm run typeorm migration:revert -- ./src/migrations -d ./dataSource.ts",
+    "db:create-migration": "npm run typeorm migration:create -- ./src/migrations",
     "db:generate-migration": "npm run typeorm migration:generate -- ./src/migrations -d ./dataSource.ts"
   },
   "dependencies": {
@@ -58,6 +58,7 @@
     "@types/express": "^4.17.17",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.1",
+    "@types/passport-local": "^1.0.38",
     "@types/supertest": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",

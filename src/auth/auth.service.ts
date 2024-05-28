@@ -13,6 +13,7 @@ export class AuthService {
   async validateUser(email: string, password: string) {
     const user: Users = await this.usersRepository.findOne({
       where: { email },
+      select: ['id', 'email', 'password', 'nickname'],
     });
     if (!user) {
       return null;

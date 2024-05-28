@@ -13,7 +13,7 @@ export class WorkspacesController {
 
   @Get('/:myId')
   getMyWorkspaces(@User() user: Users): Promise<Workspaces[]> {
-    return this.workspacesService.findMyWorkspaces(user.id);
+    return this.workspacesService.findByWorkspaces(user.id);
   }
 
   @Post()
